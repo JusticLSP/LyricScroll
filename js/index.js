@@ -102,7 +102,7 @@ createLrcElement();
 
 // 歌词容器高度
 const container_height = doms.container.clientHeight;
-// 因为翻译歌词的问题，需要拿 ul 高度来计算 li 每一行的平均高度，这样在滚动时不会产生滚动错乱的问题
+// 因为翻译歌词的问题会导致部分 li 每一行高度不同，所以需要拿 ul 高度来计算 li 每一行的平均高度，这样在滚动时不会产生滚动错乱的问题
 const ul_height = doms.ul.clientHeight;
 const li_height = ul_height / lrc_data.length;
 // 最大偏移量
