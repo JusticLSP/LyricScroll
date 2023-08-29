@@ -107,6 +107,7 @@ const ul_height = doms.ul.clientHeight;
 const li_height = ul_height / lrc_data.length;
 // 最大偏移量
 const max_offset = ul_height - container_height;
+let current_index = 0;
 /**
  * 设置歌词ul偏移量
  */
@@ -120,11 +121,14 @@ function setUlOffset() {
 		offset = max_offset;
 	}
 	doms.ul.style.transform = `translateY(${-offset}px)`;
-	// 去除上一个高亮歌词类名
-	const active_li = doms.ul.querySelector('.active');
-	if (active_li) active_li.classList.remove('active');
-	// 为当前高亮歌词添加类名
-	doms.ul.children[index].classList.add('active');
+	if (index === 0 || current_index !== index) {
+		current_index = index;
+		// 去除上一个高亮歌词类名
+		const active_li = doms.ul.querySelector('.active');
+		if (active_li) active_li.classList.remove('active');
+		// 为当前高亮歌词添加类名
+		doms.ul.children[index].classList.add('active');
+	}
 }
 
 // 为 audio 添加时间更改事件
